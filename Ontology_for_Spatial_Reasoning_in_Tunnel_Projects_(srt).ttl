@@ -1,0 +1,239 @@
+# In maintanance of the subproject D1 of the SFB 837 in Ruhr-University Bochum.
+
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+@prefix dc:   <http://purl.org/dc/elements/1.1/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix gml:  <http://www.opengis.net/ont/gml#> .
+@prefix geo:  <http://www.opengis.net/ont/geosparql#> .
+@prefix geof:  <http://www.opengis.net/def/function/geosparql/> .
+
+#srt = Spatial Reasoning in Tunnelling (short name)
+@prefix srt:  <http://w3id.org/srt#> .
+
+<http://w3id.org/srt#> a owl:Ontology;
+    rdfs:label "Ontology for Spatial Reasoning in Tunnel Projects"@en;
+    dc:creator [
+      rdf:type foaf:Person;
+      foaf:name "Marcel Stepien, Ruhr University Bochum";
+    ];
+    dc:license "https://creativecommons.org/licenses/by/4.0/"^^xsd:anyURI ;
+  	dc:publisher [
+      rdf:type foaf:Organization ;
+      foaf:name "Chair of Computing in Engineering, Ruhr University Bochum" ;
+    ];
+    dc:rights "Copyright 2021 by Chair of Computing in Engineering, Ruhr University Bochum";
+    rdfs:comment "A ontology for creating a unified knowledge base as rdf graph containing geometric WKT profile representations of elements from a BIM and GIS ingetrated environment for spatial reasoning."@en;
+    dct:date "2021-09-22"^^xsd:date;
+    dct:modified "2021-09-22"^^xsd:date;
+    vann:preferredNamespacePrefix "srt" ;
+  	vann:preferredNamespaceUri "https://w3id.org/srt#" ;
+    owl:versionInfo "0.1";
+    # For documentation tools
+    dct:description "A ontology for creating a unified knowledge base as rdf graph containing geometric WKT profile representations of elements from a BIM and GIS ingetrated environment for spatial reasoning. The ontology also provides descriptors to add personal project information and generic resources to handle geolocalization and projection informations of the wktLiterals."@en;
+    .
+
+#################################################################
+#    Classes
+#################################################################
+
+srt:RelationContainer a owl:Class;
+    rdfs:label "Relation Container"@en;
+    rdfs:comment "Represents a collection of registered objects (SpatialObject). The collection require a unique identifier to enable management of different instances for comparison and reasoning among collections."@en;
+    rdfs:subClassOf [owl:onProperty rdfs:label; owl:minCardinality 1];
+    rdfs:subClassOf [owl:onProperty srt:identifier; owl:cardinality 1];
+    rdfs:subClassOf [owl:onProperty srt:hasMeta; owl:cardinality 1];
+    rdfs:subClassOf [owl:onProperty srt:hasObject; owl:minCardinality 0];
+    .
+
+srt:ProjectMeta a owl:Class;
+    rdfs:label "Project Meta"@en;
+    rdfs:comment "A class for describing relevant context used in the creation of the instance RDF graph."@en;
+    rdfs:subClassOf [owl:onProperty rdfs:label; owl:minCardinality 1];
+    rdfs:subClassOf [owl:onProperty srt:title; owl:cardinality 1];
+    rdfs:subClassOf [owl:onProperty srt:user; owl:cardinality 1];
+    rdfs:subClassOf [owl:onProperty srt:environment; owl:cardinality 1];
+    rdfs:subClassOf [owl:onProperty srt:environmentVersion; owl:cardinality 1];
+    rdfs:subClassOf [owl:onProperty srt:globalReference; owl:cardinality 1];
+    rdfs:subClassOf [owl:onProperty srt:projection; owl:cardinality 1];
+    .
+    
+srt:SpatialObject a owl:Class;
+    rdfs:label "Spatial Object"@en;
+    rdfs:comment "A spatial object that is derived form BIM and GIS planning data. Contains a WKT profile representation and references its origin by resource or identifier."@en;
+    rdfs:subClassOf [owl:onProperty rdfs:label; owl:minCardinality 1];
+    rdfs:subClassOf [owl:onProperty srt:dataType; owl:cardinality 1];
+    rdfs:subClassOf [owl:onProperty srt:sourceItentifier; owl:cardinality 1];
+    rdfs:subClassOf [owl:onProperty srt:sourceRelation; owl:minCardinality 0];
+    rdfs:subClassOf [owl:onProperty srt:hasWKTType; owl:cardinality 1];
+    rdfs:subClassOf [owl:onProperty geo:asWKT; owl:cardinality 1];
+  	.
+    
+#################################################################
+#    Object Properties
+#################################################################
+
+
+srt:hasMeta a owl:ObjectProperty;
+    rdfs:label "metadata"@en;
+    rdfs:comment "A generic resource containing project meta data of the originating planning environment."@en;
+    rdfs:domain srt:RelationContainer;
+    rdfs:range srt:ProjectMeta;
+    .
+    
+srt:hasObject a owl:ObjectProperty;
+    rdfs:label "object"@en;
+    rdfs:comment "Lists of all relevant spatial objects assigned to the relation container."@en;
+    rdfs:domain srt:RelationContainer;
+    rdfs:range srt:SpatialObject;
+    .
+    
+srt:sourceRelation a owl:ObjectProperty;
+    rdfs:label "source object relation"@en;
+    rdfs:comment "Provides a connection to the originating source of information that has been derived into a spatial object. Can be used to access meta information for querying by linking a resource containing additional information about the spatial object. Only necessary if a source object exists."@en;
+    rdfs:domain srt:SpatialObject;
+    rdfs:range rdfs:resource;
+    .
+
+srt:sourceItentifier a owl:ObjectProperty;
+    rdfs:label "source object identifier"@en;
+    rdfs:comment "Includes an identifier that should pointing to the source object and used for referencing if a srt:sourceRelation can not be provided in RDF."@en;
+    rdfs:domain srt:SpatialObject;
+    rdfs:range xsd:string;
+    .
+
+srt:hasWKTType a owl:ObjectProperty;
+    rdfs:label "has WKT Type"@en;
+    rdfs:comment "Classification of the wkt literals contained by the spatial object. Known type resources of the gml specification are recommended to be used."@en;
+    rdfs:domain srt:SpatialObject;
+    rdfs:range gml:AbstractGeometry;
+    .
+
+srt:title a owl:ObjectProperty;
+    rdfs:label "title"@en;
+    rdfs:comment "The title of the project in the context of which the srt:RelationContainer was created."@en;
+    rdfs:domain srt:ProjectMeta;
+    rdfs:range xsd:string;
+    .
+    
+srt:user a owl:ObjectProperty;
+    rdfs:label "user"@en;
+    rdfs:comment "The user managing or owning the created srt:RelationContainer."@en;
+    rdfs:domain srt:ProjectMeta;
+    rdfs:range xsd:string;
+    .
+
+srt:environment a owl:ObjectProperty;
+    rdfs:label "environment"@en;
+    rdfs:comment "The environment the project was generated from."@en;
+    rdfs:domain srt:ProjectMeta;
+    rdfs:range xsd:string;
+    .
+    
+srt:environmentVersion a owl:ObjectProperty;
+    rdfs:label "environment version"@en;
+    rdfs:comment "The version of the environment the project was generated from."@en;
+    rdfs:domain srt:ProjectMeta;
+    rdfs:range xsd:integer;
+    .
+    
+srt:globalReference a owl:ObjectProperty;
+    rdfs:label "Global Reference Point"@en;
+    rdfs:comment "Generic placeholder for the global reference point. Usually providing the location of the coordinate system default origin."@en;
+    rdfs:domain srt:ProjectMeta;
+    rdfs:range rdfs:resource;
+    .
+
+srt:projection a owl:ObjectProperty;
+    rdfs:label "Projection Information"@en;
+    rdfs:comment "Generic placeholder for projection informations to enable correct geometry transformation."@en;
+    rdfs:domain srt:ProjectMeta;
+    rdfs:range rdfs:resource;
+    .
+    
+#################################################################
+#    Datatype Properties
+#################################################################
+
+srt:identifier a owl:DatatypeProperty;
+    rdfs:label "identifier"@en;
+    rdfs:comment "The identification of the relation container as text information. Must be unique within the register. It is recomended to insert a GUID."@en;
+    rdfs:domain srt:RelationContainer;
+    rdfs:range xsd:string;
+    .
+    
+srt:dataType a owl:DatatypeProperty;
+    rdfs:label "dataType"@en;
+    rdfs:comment "A type hint describing the origin of the spatial resource. Such as Alignment, Cadastral or Buildingd from CityGML. If none of the listet types apply, Unknown should be used and a custom type can then be references using srt:sourceRelation instead."@en;
+    rdfs:domain srt:SpatialObject;
+    rdfs:range [
+      rdf:type rdfs:Datatype ;
+      owl:oneOf (
+          "Alignment"
+          "Cadastral"
+          "Building"
+          "Constraint"
+          "Unknown"
+        ) ;
+    ] ;
+    .
+    
+#################################################################
+#    Named Individuals 
+#################################################################
+
+#srt:Alignment a owl:NamedIndividual;
+#	rdfs:subPropertyOf srt:dataType;
+#    rdfs:label "Alignment dataType"@en;
+#    rdfs:comment "Can be used as datatype describing and alignment profile generated from am IFC file."@en;
+#    .
+
+#srt:Cadastral a owl:NamedIndividual;
+#	rdfs:subPropertyOf srt:dataType;
+#    rdfs:label "Cadastral dataType"@en;
+#    rdfs:comment "Can be used as datatype describing and cadastral map profile generated from am gml or xml document."@en;
+#    .
+    
+#srt:Building a owl:NamedIndividual;
+#	rdfs:subPropertyOf srt:dataType;
+#    rdfs:label "Building dataType"@en;
+#    rdfs:comment "Can be used as datatype describing and building profile generated from am cityGML file."@en;
+#    .
+    
+    
+#################################################################
+#    MISC
+#################################################################
+
+#srt:ReferncePoint a owl:Class;
+#    rdfs:label "Global Reference Point"@en;
+#    rdfs:comment "A reference point specified in WGS84 coordinate reference system. The Point will describe the absolute position of the coordinate system origin."@en;
+#    rdfs:subClassOf [owl:onProperty srt:longitude; owl:cardinality 1];
+#    rdfs:subClassOf [owl:onProperty srt:latitude; owl:cardinality 1];
+#    rdfs:subClassOf [owl:onProperty srt:zoom; owl:cardinality 1];
+#    .
+    
+#srt:longitude a owl:ObjectProperty;
+#    rdfs:label "longitude"@en;
+#    rdfs:comment "A geographic coodinate that specifies the east-west position of a point on the Earth's surface"@en;
+#    rdfs:domain srt:ReferncePoint;
+#    rdfs:range xsd:float;
+#    .
+
+#srt:latitude a owl:ObjectProperty;
+#    rdfs:label "longitude"@en;
+#    rdfs:comment "A geographic coodinate that specifies the north-south position of a point on the Earth's surface"@en;
+#    rdfs:domain srt:ReferncePoint;
+#    rdfs:range xsd:float;
+#    .
+    
+#srt:zoom a owl:ObjectProperty;
+#    rdfs:label "longitude"@en;
+#    rdfs:comment "The zoom level used to calculate from WGS84 to Map tiles and back."@en;
+#    rdfs:domain srt:ReferncePoint;
+#    rdfs:range xsd:integer;
+#    .

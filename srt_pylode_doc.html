@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ontology for Spatial Reasoning in Tunnel Projects</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    
+    <style>
+        #pylode {
+            position: fixed;
+            top: 130px;
+            left: -60px;
+            font-size: small;
+            transform: rotate(-90deg);
+            color: grey;
+        }
+        #pylode a {
+            font-size: 2em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #005A9C;
+        }
+        #pylode a:hover {
+            color: #333;
+        }
+
+        .cardinality {
+            font-style: italic;
+            color: #aa00aa;
+        }
+
+        dt {
+            font-weight: bold;
+            padding: 5px 0 5px 0;
+        }
+
+        ul.hlist {
+            list-style-type: none;
+            border: 1px solid navy;
+            padding:5px;
+            background-color: #F4FFFF;
+        }
+
+        ul.hierarchy {
+            border: 1px solid navy;
+            padding: 5px 25px 5px 25px;
+            background-color: #F4FFFF;
+        }
+
+
+        ul.hlist li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .entity {
+            border: 1px solid navy;
+            margin:5px 0 5px 0;
+            padding: 5px;
+        }
+
+        .entity th {
+            width: 150px;
+            vertical-align: top;
+        }
+
+        .entity th,
+        .entity td {
+            padding-bottom: 20px;
+        }
+
+        .entity table th {
+            text-align: left;
+        }
+
+        section#overview img {
+            max-width: 1000px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            text-align: left
+        }
+        h1, h2, h3 {
+            color: #005A9C; background: white
+        }
+        h1 {
+            font: 170% sans-serif;
+            line-height: 110%;
+        }
+        h2 {
+            font: 140% sans-serif;
+            margin-top:40px;
+        }
+        h3 {
+            font: 120% sans-serif;
+            margin-top: 3px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid navy;
+        }
+        h4 { font: bold 100% sans-serif }
+        h5 { font: italic 100% sans-serif }
+        h6 { font: small-caps 100% sans-serif }
+
+
+        body {
+            padding: 2em 70px 2em 70px;
+            margin: 0;
+            font-family: sans-serif;
+            color: black;
+            background: white;
+            background-position: top left;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            text-align: justify;
+        }
+
+        section {
+            max-width: 1500px;
+        }
+
+        .figure {
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        :link { color: #00C; background: transparent }
+        :visited { color: #609; background: transparent }
+        a:active { color: #C00; background: transparent }
+
+        .sup-c,
+        .sup-op,
+        .sup-fp,
+        .sup-dp,
+        .sup-ap,
+        .sup-p,
+        .sup-ni,
+        .sup-cp,
+        .sup-cl {
+            cursor:help;
+            margin-left: 3px;
+        }
+
+        .sup-c {
+            color:orange;
+        }
+
+        .sup-op {
+            color:navy;
+        }
+
+        .sup-fp {
+            color:lightskyblue;
+        }
+
+        .sup-dp {
+            color:green;
+        }
+
+        .sup-ap {
+            color:darkred;
+        }
+
+        .sup-p {
+            color:black;
+        }
+
+        .sup-ni {
+            color:brown;
+        }
+
+        .sup-cp {
+            color:orange;
+        }
+
+        .sup-cl {
+            color:darkred;
+        }
+
+        code {
+            font-size: large;
+            color: darkred;
+        }
+
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
+    </style>
+    
+    <script type="application/ld+json">
+      [
+  {
+    "@id": "http://w3id.org/srt#",
+    "@type": [
+      "https://schema.org/DefinedTermSet"
+    ],
+    "https://schema.org/description": [
+      {
+        "@value": "<p>A ontology for creating a unified knowledge base as rdf graph containing geometric WKT profile representations of elements from a BIM and GIS ingetrated environment for spatial reasoning. The ontology also provides descriptors to add personal project information and generic resources to handle geolocalization and projection informations of the wktLiterals.</p>"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "Ontology for Spatial Reasoning in Tunnel Projects"
+      }
+    ]
+  }
+]
+    </script>
+</head>
+<body>
+  <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
+    <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
+    <span style="font-size:smaller;">2.8.3</span>
+  </div>
+  <h1>Ontology for Spatial Reasoning in Tunnel Projects</h1>
+<section id="metadata">
+    <h2 style="display:none;">Metadata</h2>
+    <dl>
+        <dt>URI</dt>
+        <dd><code>http://w3id.org/srt#</code></dd>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/publisher">Publisher</a>(s)</dt>
+        <dd>
+            
+    Chair of Computing in Engineering, Ruhr University Bochum<br/>
+        </dd>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator">Creator</a>(s)</dt>
+        <dd>
+            
+    Marcel Stepien, Ruhr University Bochum<br/>
+        </dd>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/modified">Modified</a></dt>
+        <dd>2021-09-28</dd>
+        <dt>Version Information</dt>
+        <dd>0.1</dd>
+        <dt>Ontology RDF</dt>
+        <dd><a href="Ontology_for_Spatial_Reasoning_in_Tunnel_Projects_(srt).ttl">RDF (turtle)</a></dd>
+    </dl>
+    <h2>Description</h2>
+    <div id="description">
+        <p>A ontology for creating a unified knowledge base as rdf graph containing geometric WKT profile representations of elements from a BIM and GIS ingetrated environment for spatial reasoning. The ontology also provides descriptors to add personal project information and generic resources to handle geolocalization and projection informations of the wktLiterals.</p>
+    </div>
+</section>
+<section id="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#objectproperties">Object Properties</a></li>
+        <li><a href="#datatypeproperties">Datatype Properties</a></li>
+        <li><a href="#namespaces">Namespaces</a></li>
+        <li><a href="#legend">Legend</a></li>
+    </ol>
+</section>
+<section id="overview">
+    <h2>Overview</h2>
+    <div class="figure">
+		<picture>
+			<img src="General_Concept_of_the_srt_ontology.png" alt="MDN">
+		</picture>
+        <div class="caption"><strong>Figure 1:</strong> Overview of the ontology for spatial reasoning in tunnel projects</div>
+    </div>
+	<br>
+	<div class="figure">
+        <picture>
+			<img src="Instanced_Example_of_the_srt_ontology.png" alt="MDN">
+		</picture>
+		<div class="caption"><strong>Figure 1:</strong> Instanced example of the srt ontology</div>
+    </div>
+</section>
+  <section id="classes">
+    <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#ProjectMeta">Project Meta</a></li>
+        <li><a href="#RelationContainer">Relation Container</a></li>
+        <li><a href="#SpatialObject">Spatial Object</a></li>
+    </ul>
+    <div class="entity class" id="ProjectMeta">
+        <h3>Project Meta<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://w3id.org/srt#ProjectMeta</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>A class for describing relevant context used in the creation of the instance RDF graph.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="http://w3id.org/srt#globalReference">srt:globalReference</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://w3id.org/srt#environmentVersion">srt:environmentVersion</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://w3id.org/srt#title">srt:title</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://w3id.org/srt#environment">srt:environment</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://w3id.org/srt#projection">srt:projection</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://w3id.org/srt#user">srt:user</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://w3id.org/srt#title">srt:title</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://w3id.org/srt#globalReference">srt:globalReference</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://w3id.org/srt#projection">srt:projection</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://w3id.org/srt#user">srt:user</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://w3id.org/srt#environment">srt:environment</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://w3id.org/srt#environmentVersion">srt:environmentVersion</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://w3id.org/srt#hasMeta">srt:hasMeta</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="RelationContainer">
+        <h3>Relation Container<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://w3id.org/srt#RelationContainer</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Represents a collection of registered objects (SpatialObject). The collection require a unique identifier to enable management of different instances for comparison and reasoning among collections.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="http://w3id.org/srt#hasMeta">srt:hasMeta</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://w3id.org/srt#identifier">srt:identifier</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://w3id.org/srt#hasObject">srt:hasObject</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://w3id.org/srt#hasObject">srt:hasObject</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://w3id.org/srt#identifier">srt:identifier</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://w3id.org/srt#hasMeta">srt:hasMeta</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="SpatialObject">
+        <h3>Spatial Object<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://w3id.org/srt#SpatialObject</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>A spatial object that is derived form BIM and GIS planning data. Contains a WKT profile representation and references its origin by resource or identifier.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://w3id.org/srt#sourceItentifier">srt:sourceItentifier</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.opengis.net/ont/geosparql#asWKT">geo:asWKT</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://w3id.org/srt#dataType">srt:dataType</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://w3id.org/srt#sourceRelation">srt:sourceRelation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://w3id.org/srt#hasWKTType">srt:hasWKTType</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="http://w3id.org/srt#sourceRelation">srt:sourceRelation</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://w3id.org/srt#hasWKTType">srt:hasWKTType</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://w3id.org/srt#dataType">srt:dataType</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="http://w3id.org/srt#sourceItentifier">srt:sourceItentifier</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="http://w3id.org/srt#hasObject">srt:hasObject</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+<section id="objectproperties">
+    <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#environment">environment</a></li>
+        <li><a href="#environmentversion">environment version</a></li>
+        <li><a href="#GlobalReferencePoint">Global Reference Point</a></li>
+        <li><a href="#metadata">metadata</a></li>
+        <li><a href="#object">object</a></li>
+        <li><a href="#hasWKTType">has WKT Type</a></li>
+        <li><a href="#ProjectionInformation">Projection Information</a></li>
+        <li><a href="#sourceobjectidentifier">source object identifier</a></li>
+        <li><a href="#sourceobjectrelation">source object relation</a></li>
+        <li><a href="#title">title</a></li>
+        <li><a href="#user">user</a></li>
+    </ul>
+    <div class="entity property" id="environment">
+        <h3>environment<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://w3id.org/srt#environment</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The environment the project was generated from.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://w3id.org/srt#ProjectMeta">srt:ProjectMeta</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="environmentversion">
+        <h3>environment version<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://w3id.org/srt#environmentVersion</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The version of the environment the project was generated from.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://w3id.org/srt#ProjectMeta">srt:ProjectMeta</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="GlobalReferencePoint">
+        <h3>Global Reference Point<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://w3id.org/srt#globalReference</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Generic placeholder for the global reference point. Usually providing the location of the coordinate system default origin.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://w3id.org/srt#ProjectMeta">srt:ProjectMeta</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#resource">rdfs:resource</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="metadata">
+        <h3>metadata<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://w3id.org/srt#hasMeta</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A generic resource containing project meta data of the originating planning environment.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://w3id.org/srt#RelationContainer">srt:RelationContainer</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://w3id.org/srt#ProjectMeta">srt:ProjectMeta</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="object">
+        <h3>object<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://w3id.org/srt#hasObject</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Lists of all relevant spatial objects assigned to the relation container.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://w3id.org/srt#RelationContainer">srt:RelationContainer</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://w3id.org/srt#SpatialObject">srt:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasWKTType">
+        <h3>has WKT Type<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://w3id.org/srt#hasWKTType</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Classification of the wkt literals contained by the spatial object. Known type resources of the gml specification are recommended to be used.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://w3id.org/srt#SpatialObject">srt:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.opengis.net/ont/gml#AbstractGeometry">gml:AbstractGeometry</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="ProjectionInformation">
+        <h3>Projection Information<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://w3id.org/srt#projection</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Generic placeholder for projection informations to enable correct geometry transformation.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://w3id.org/srt#ProjectMeta">srt:ProjectMeta</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#resource">rdfs:resource</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="sourceobjectidentifier">
+        <h3>source object identifier<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://w3id.org/srt#sourceItentifier</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Includes an identifier that should pointing to the source object and used for referencing if a srt:sourceRelation can not be provided in RDF.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://w3id.org/srt#SpatialObject">srt:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="sourceobjectrelation">
+        <h3>source object relation<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://w3id.org/srt#sourceRelation</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Provides a connection to the originating source of information that has been derived into a spatial object. Can be used to access meta information for querying by linking a resource containing additional information about the spatial object. Only necessary if a source object exists.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://w3id.org/srt#SpatialObject">srt:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#resource">rdfs:resource</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="title">
+        <h3>title<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://w3id.org/srt#title</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The title of the project in the context of which the srt:RelationContainer was created.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://w3id.org/srt#ProjectMeta">srt:ProjectMeta</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="user">
+        <h3>user<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://w3id.org/srt#user</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The user managing or owning the created srt:RelationContainer.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://w3id.org/srt#ProjectMeta">srt:ProjectMeta</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section id="datatypeproperties">
+    <h2>Datatype Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#dataType">dataType</a></li>
+        <li><a href="#identifier">identifier</a></li>
+    </ul>
+    <div class="entity property" id="dataType">
+        <h3>dataType<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://w3id.org/srt#dataType</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A type hint describing the origin of the spatial resource. Such as Alignment, Cadastral or Buildingd from CityGML. If none of the listet types apply, Unknown should be used and a custom type can then be references using srt:sourceRelation instead.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://w3id.org/srt#SpatialObject">srt:SpatialObject</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="identifier">
+        <h3>identifier<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://w3id.org/srt#identifier</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The identification of the relation container as text information. Must be unique within the register. It is recomended to insert a GUID.
+                </td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="http://w3id.org/srt#RelationContainer">srt:RelationContainer</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+  
+  <section id="namedindividuals">
+    <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+    </ul>
+</section>
+  
+  <section id="namespaces">
+    <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <dl>
+        <dt>dc</dt>
+        <dd><code>http://purl.org/dc/elements/1.1/</code></dd>
+        <dt>dct</dt>
+        <dd><code>http://purl.org/dc/terms/</code></dd>
+        <dt>foaf</dt>
+        <dd><code>http://xmlns.com/foaf/0.1/</code></dd>
+        <dt>geo</dt>
+        <dd><code>http://www.opengis.net/ont/geosparql#</code></dd>
+        <dt>geof</dt>
+        <dd><code>http://www.opengis.net/def/function/geosparql/</code></dd>
+        <dt>gml</dt>
+        <dd><code>http://www.opengis.net/ont/gml#</code></dd>
+        <dt>owl</dt>
+        <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+        <dt>prov</dt>
+        <dd><code>http://www.w3.org/ns/prov#</code></dd>
+        <dt>rdf</dt>
+        <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
+        <dt>rdfs</dt>
+        <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+        <dt>sdo</dt>
+        <dd><code>https://schema.org/</code></dd>
+        <dt>skos</dt>
+        <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
+        <dt>srt</dt>
+        <dd><code>http://w3id.org/srt#</code></dd>
+        <dt>vann</dt>
+        <dd><code>http://purl.org/vocab/vann/</code></dd>
+        <dt>xsd</dt>
+        <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
+    </dl>
+</section>
+  <section id="legend">
+      <h2>Legend</h2>
+      <table class="entity">
+          <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
+          <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
+          <tr><td><sup class="sup-fp" title="Functional Properties">fp</sup></td><td>Functional Properties</td></tr>
+          <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+          <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
+          <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
+          <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
+      </table>
+  </section>
+</body>
+</html>
