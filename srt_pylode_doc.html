@@ -119,7 +119,6 @@
 
         .figure {
             margin-bottom: 20px;
-            margin-top: 20px;
         }
 
         :link { color: #00C; background: transparent }
@@ -230,7 +229,7 @@
     Marcel Stepien, Ruhr University Bochum<br/>
         </dd>
         <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/modified">Modified</a></dt>
-        <dd>2021-09-28</dd>
+        <dd>2021-09-29</dd>
         <dt>Version Information</dt>
         <dd>0.1</dd>
         <dt>Ontology RDF</dt>
@@ -264,18 +263,18 @@
         <picture>
 			<img src="Instanced_Example_of_the_srt_ontology.png" alt="MDN">
 		</picture>
-		<div class="caption"><strong>Figure 1:</strong> Instanced example of the srt ontology</div>
+		<div class="caption"><strong>Figure 2:</strong> Instanced example of the srt ontology</div>
     </div>
 </section>
   <section id="classes">
     <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
-        <li><a href="#ProjectMeta">Project Meta</a></li>
-        <li><a href="#RelationContainer">Relation Container</a></li>
-        <li><a href="#SpatialObject">Spatial Object</a></li>
+        <li><a href="#ProjectMeta">ProjectMeta</a></li>
+        <li><a href="#RelationContainer">RelationContainer</a></li>
+        <li><a href="#SpatialObject">SpatialObject</a></li>
     </ul>
     <div class="entity class" id="ProjectMeta">
-        <h3>Project Meta<sup title="class" class="sup-c">c</sup></h3>
+        <h3>ProjectMeta<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -290,24 +289,24 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://w3id.org/srt#globalReference">srt:globalReference</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://w3id.org/srt#environmentVersion">srt:environmentVersion</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://w3id.org/srt#title">srt:title</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://w3id.org/srt#environment">srt:environment</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://w3id.org/srt#projection">srt:projection</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a> <span class="cardinality">min</span> 1<br/>
                     <a href="http://w3id.org/srt#user">srt:user</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://w3id.org/srt#projection">srt:projection</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://w3id.org/srt#title">srt:title</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://w3id.org/srt#globalReference">srt:globalReference</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="http://w3id.org/srt#title">srt:title</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://w3id.org/srt#globalReference">srt:globalReference</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://w3id.org/srt#projection">srt:projection</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://w3id.org/srt#user">srt:user</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://w3id.org/srt#environment">srt:environment</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://w3id.org/srt#projection">srt:projection</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://w3id.org/srt#environmentVersion">srt:environmentVersion</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://w3id.org/srt#title">srt:title</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://w3id.org/srt#environment">srt:environment</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://w3id.org/srt#globalReference">srt:globalReference</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -319,7 +318,7 @@
         </table>
     </div>
     <div class="entity class" id="RelationContainer">
-        <h3>Relation Container<sup title="class" class="sup-c">c</sup></h3>
+        <h3>RelationContainer<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -334,24 +333,24 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://w3id.org/srt#hasMeta">srt:hasMeta</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://w3id.org/srt#identifier">srt:identifier</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a> <span class="cardinality">min</span> 1<br/>
                     <a href="http://w3id.org/srt#hasObject">srt:hasObject</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a> <span class="cardinality">min</span> 1<br/>
+                    <a href="http://w3id.org/srt#hasMeta">srt:hasMeta</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
                     <a href="http://w3id.org/srt#hasObject">srt:hasObject</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://w3id.org/srt#identifier">srt:identifier</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="http://w3id.org/srt#hasMeta">srt:hasMeta</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="http://w3id.org/srt#identifier">srt:identifier</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
     <div class="entity class" id="SpatialObject">
-        <h3>Spatial Object<sup title="class" class="sup-c">c</sup></h3>
+        <h3>SpatialObject<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -366,20 +365,20 @@
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a> <span class="cardinality">min</span> 1<br/>
-                    <a href="http://w3id.org/srt#sourceItentifier">srt:sourceItentifier</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
-                    <a href="http://www.opengis.net/ont/geosparql#asWKT">geo:asWKT</a> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://w3id.org/srt#dataType">srt:dataType</a><sup class="sup-dp" title="datatype property">dp</sup> <span class="cardinality">exactly</span> 1<br/>
                     <a href="http://w3id.org/srt#sourceRelation">srt:sourceRelation</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">min</span> 0<br/>
                     <a href="http://w3id.org/srt#hasWKTType">srt:hasWKTType</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.opengis.net/ont/geosparql#asWKT">geo:asWKT</a> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://w3id.org/srt#sourceItentifier">srt:sourceItentifier</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">exactly</span> 1<br/>
+                    <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a> <span class="cardinality">min</span> 1<br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
+                    <a href="http://w3id.org/srt#dataType">srt:dataType</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="http://w3id.org/srt#sourceRelation">srt:sourceRelation</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="http://w3id.org/srt#hasWKTType">srt:hasWKTType</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="http://w3id.org/srt#dataType">srt:dataType</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="http://w3id.org/srt#sourceItentifier">srt:sourceItentifier</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
@@ -396,14 +395,14 @@
     <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
         <li><a href="#environment">environment</a></li>
-        <li><a href="#environmentversion">environment version</a></li>
-        <li><a href="#GlobalReferencePoint">Global Reference Point</a></li>
-        <li><a href="#metadata">metadata</a></li>
-        <li><a href="#object">object</a></li>
-        <li><a href="#hasWKTType">has WKT Type</a></li>
-        <li><a href="#ProjectionInformation">Projection Information</a></li>
-        <li><a href="#sourceobjectidentifier">source object identifier</a></li>
-        <li><a href="#sourceobjectrelation">source object relation</a></li>
+        <li><a href="#environmentVersion">environmentVersion</a></li>
+        <li><a href="#globalReference">globalReference</a></li>
+        <li><a href="#hasMeta">hasMeta</a></li>
+        <li><a href="#hasObject">hasObject</a></li>
+        <li><a href="#hasWKTType">hasWKTType</a></li>
+        <li><a href="#projection">projection</a></li>
+        <li><a href="#sourceItentifier">sourceItentifier</a></li>
+        <li><a href="#sourceRelation">sourceRelation</a></li>
         <li><a href="#title">title</a></li>
         <li><a href="#user">user</a></li>
     </ul>
@@ -434,8 +433,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="environmentversion">
-        <h3>environment version<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="environmentVersion">
+        <h3>environmentVersion<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -461,8 +460,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="GlobalReferencePoint">
-        <h3>Global Reference Point<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="globalReference">
+        <h3>globalReference<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -488,8 +487,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="metadata">
-        <h3>metadata<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="hasMeta">
+        <h3>hasMeta<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -515,8 +514,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="object">
-        <h3>object<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="hasObject">
+        <h3>hasObject<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -543,7 +542,7 @@
         </table>
     </div>
     <div class="entity property" id="hasWKTType">
-        <h3>has WKT Type<sup title="object property" class="sup-op">op</sup></h3>
+        <h3>hasWKTType<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -569,8 +568,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="ProjectionInformation">
-        <h3>Projection Information<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="projection">
+        <h3>projection<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -596,8 +595,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="sourceobjectidentifier">
-        <h3>source object identifier<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="sourceItentifier">
+        <h3>sourceItentifier<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -623,8 +622,8 @@
             </tr>
         </table>
     </div>
-    <div class="entity property" id="sourceobjectrelation">
-        <h3>source object relation<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="sourceRelation">
+        <h3>sourceRelation<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
