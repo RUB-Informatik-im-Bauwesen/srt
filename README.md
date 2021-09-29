@@ -14,11 +14,8 @@ Markdown documentation created by [pyLODE](http://github.com/rdflib/pyLODE) 2.8.
 * **Version Information**
   * 0.1
 * **Ontology RDF**
-<<<<<<< HEAD
-  * RDF ([turtle](Ontology_for_Spatial_Reasoning_in_Tunnel_Projects_(srt).ttl))
-=======
   * RDF ([turtle](https://github.com/RUB-Informatik-im-Bauwesen/srt/blob/main/Ontology_for_Spatial_Reasoning_in_Tunnel_Projects_(srt).ttl))
->>>>>>> a84017a23a917d0e02c50e52135845ee8bd8cd0b
+
 ### Description
 <p>A ontology for creating a unified knowledge base as rdf graph containing geometric WKT profile representations of elements from a BIM and GIS ingetrated environment for spatial reasoning. The ontology also provides descriptors to add personal project information and generic resources to handle geolocalization and projection informations of the wktLiterals.</p>
 
