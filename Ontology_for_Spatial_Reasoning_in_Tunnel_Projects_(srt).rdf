@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       	xmlns:owl="http://www.w3.org/2002/07/owl#"
+       	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+       	xmlns:dc11="http://purl.org/dc/elements/1.1/"
+       	xmlns:foaf="http://xmlns.com/foaf/0.1/"
+       	xmlns:dc="http://purl.org/dc/terms/"
+       	xmlns:vann="http://purl.org/vocab/vann/">
+	<owl:Ontology rdf:about="http://w3id.org/srt#">
+		<rdfs:label xml:lang="en">Ontology for Spatial Reasoning in Tunnel Projects</rdfs:label>
+		<dc11:creator>
+			<foaf:Person>
+				<foaf:name>Marcel Stepien, Ruhr University Bochum</foaf:name>
+			</foaf:Person>
+		</dc11:creator>
+		<dc11:license rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://creativecommons.org/licenses/by/4.0/</dc11:license>
+		<dc11:publisher>
+			<foaf:Organization>
+				<foaf:name>Chair of Computing in Engineering, Ruhr University Bochum</foaf:name>
+			</foaf:Organization>
+		</dc11:publisher>
+		<dc11:rights>Copyright 2021 by Chair of Computing in Engineering, Ruhr University Bochum</dc11:rights>
+		<rdfs:comment xml:lang="en">A ontology for creating a unified knowledge base as rdf graph containing geometric WKT profile representations of elements from a BIM and GIS ingetrated environment for spatial reasoning.</rdfs:comment>
+		<dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-29</dc:date>
+		<dc:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-09-29</dc:modified>
+		<vann:preferredNamespacePrefix>srt</vann:preferredNamespacePrefix>
+		<vann:preferredNamespaceUri>https://w3id.org/srt#</vann:preferredNamespaceUri>
+		<owl:versionInfo>0.1</owl:versionInfo>
+		<dc:description xml:lang="en">A ontology for creating a unified knowledge base as rdf graph containing geometric WKT profile representations of elements from a BIM and GIS ingetrated environment for spatial reasoning. The ontology also provides descriptors to add personal project information and generic resources to handle geolocalization and projection informations of the wktLiterals.</dc:description>
+	</owl:Ontology>
+	<owl:Class rdf:about="http://w3id.org/srt#RelationContainer">
+		<rdfs:label xml:lang="en">RelationContainer</rdfs:label>
+		<rdfs:comment xml:lang="en">Represents a collection of registered objects (SpatialObject). The collection require a unique identifier to enable management of different instances for comparison and reasoning among collections.</rdfs:comment>
+		<rdfs:subClassOf>
+			<rdf:Description>
+				<owl:onProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+				<owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:minCardinality>
+			</rdf:Description>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<rdf:Description>
+				<owl:onProperty>
+					<owl:DatatypeProperty rdf:about="http://w3id.org/srt#identifier">
+						<rdfs:label xml:lang="en">identifier</rdfs:label>
+						<rdfs:comment xml:lang="en">The identification of the relation container as text information. Must be unique within the register. It is recomended to insert a GUID.</rdfs:comment>
+						<rdfs:domain rdf:resource="http://w3id.org/srt#RelationContainer"/>
+						<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+					</owl:DatatypeProperty>
+				</owl:onProperty>
+				<owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:cardinality>
+			</rdf:Description>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<rdf:Description>
+				<owl:onProperty>
+					<owl:ObjectProperty rdf:about="http://w3id.org/srt#hasMeta">
+						<rdfs:label xml:lang="en">hasMeta</rdfs:label>
+						<rdfs:comment xml:lang="en">A generic resource containing project meta data of the originating planning environment.</rdfs:comment>
+						<rdfs:domain rdf:resource="http://w3id.org/srt#RelationContainer"/>
+						<rdfs:range rdf:resource="http://w3id.org/srt#ProjectMeta"/>
+					</owl:ObjectProperty>
+				</owl:onProperty>
+				<owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:cardinality>
+			</rdf:Description>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<rdf:Description>
+				<owl:onProperty>
+					<owl:ObjectProperty rdf:about="http://w3id.org/srt#hasObject">
+						<rdfs:label xml:lang="en">hasObject</rdfs:label>
+						<rdfs:comment xml:lang="en">Lists of all relevant spatial objects assigned to the relation container.</rdfs:comment>
+						<rdfs:domain rdf:resource="http://w3id.org/srt#RelationContainer"/>
+						<rdfs:range rdf:resource="http://w3id.org/srt#SpatialObject"/>
+					</owl:ObjectProperty>
+				</owl:onProperty>
+				<owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</owl:minCardinality>
+			</rdf:Description>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://w3id.org/srt#ProjectMeta">
+		<rdfs:label xml:lang="en">ProjectMeta</rdfs:label>
+		<rdfs:comment xml:lang="en">A class for describing relevant context used in the creation of the instance RDF graph.</rdfs:comment>
+		<rdfs:subClassOf>
+			<rdf:Description>
+				<owl:onProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+				<owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:minCardinality>
+			</rdf:Description>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<rdf:Description>
+				<owl:onProperty>
+					<owl:ObjectProperty rdf:about="http://w3id.org/srt#title">
+						<rdfs:label xml:lang="en">title</rdfs:label>
+						<rdfs:comment xml:lang="en">The title of the project in the context of which the srt:RelationContainer was created.</rdfs:comment>
+						<rdfs:domain rdf:resource="http://w3id.org/srt#ProjectMeta"/>
+						<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+					</owl:ObjectProperty>
+				</owl:onProperty>
+				<owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:cardinality>
+			</rdf:Description>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<rdf:Description>
+				<owl:onProperty>
+					<owl:ObjectProperty rdf:about="http://w3id.org/srt#user">
+						<rdfs:label xml:lang="en">user</rdfs:label>
+						<rdfs:comment xml:lang="en">The user managing or owning the created srt:RelationContainer.</rdfs:comment>
+						<rdfs:domain rdf:resource="http://w3id.org/srt#ProjectMeta"/>
+						<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+					</owl:ObjectProperty>
+				</owl:onProperty>
+				<owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:cardinality>
+			</rdf:Description>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<rdf:Description>
+				<owl:onProperty>
+					<owl:ObjectProperty rdf:about="http://w3id.org/srt#environment">
+						<rdfs:label xml:lang="en">environment</rdfs:label>
+						<rdfs:comment xml:lang="en">The environment the project was generated from.</rdfs:comment>
+						<rdfs:domain rdf:resource="http://w3id.org/srt#ProjectMeta"/>
+						<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+					</owl:ObjectProperty>
+				</owl:onProperty>
+				<owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:cardinality>
+			</rdf:Description>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<rdf:Description>
+				<owl:onProperty>
+					<owl:ObjectProperty rdf:about="http://w3id.org/srt#environmentVersion">
+						<rdfs:label xml:lang="en">environmentVersion</rdfs:label>
+						<rdfs:comment xml:lang="en">The version of the environment the project was generated from.</rdfs:comment>
+						<rdfs:domain rdf:resource="http://w3id.org/srt#ProjectMeta"/>
+						<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+					</owl:ObjectProperty>
+				</owl:onProperty>
+				<owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:cardinality>
+			</rdf:Description>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<rdf:Description>
+				<owl:onProperty>
+					<owl:ObjectProperty rdf:about="http://w3id.org/srt#globalReference">
+						<rdfs:label xml:lang="en">globalReference</rdfs:label>
+						<rdfs:comment xml:lang="en">Generic placeholder for the global reference point. Usually providing the location of the coordinate system default origin.</rdfs:comment>
+						<rdfs:domain rdf:resource="http://w3id.org/srt#ProjectMeta"/>
+						<rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#resource"/>
+					</owl:ObjectProperty>
+				</owl:onProperty>
+				<owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:cardinality>
+			</rdf:Description>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<rdf:Description>
+				<owl:onProperty>
+					<owl:ObjectProperty rdf:about="http://w3id.org/srt#projection">
+						<rdfs:label xml:lang="en">projection</rdfs:label>
+						<rdfs:comment xml:lang="en">Generic placeholder for projection informations to enable correct geometry transformation.</rdfs:comment>
+						<rdfs:domain rdf:resource="http://w3id.org/srt#ProjectMeta"/>
+						<rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#resource"/>
+					</owl:ObjectProperty>
+				</owl:onProperty>
+				<owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:cardinality>
+			</rdf:Description>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:about="http://w3id.org/srt#SpatialObject">
+		<rdfs:label xml:lang="en">SpatialObject</rdfs:label>
+		<rdfs:comment xml:lang="en">A spatial object that is derived form BIM and GIS planning data. Contains a WKT profile representation and references its origin by resource or identifier.</rdfs:comment>
+		<rdfs:subClassOf>
+			<rdf:Description>
+				<owl:onProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+				<owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:minCardinality>
+			</rdf:Description>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<rdf:Description>
+				<owl:onProperty>
+					<owl:DatatypeProperty rdf:about="http://w3id.org/srt#dataType">
+						<rdfs:label xml:lang="en">dataType</rdfs:label>
+						<rdfs:comment xml:lang="en">A type hint describing the origin of the spatial resource. Such as Alignment, Cadastral or Buildingd from CityGML. If none of the listet types apply, Unknown should be used and a custom type can then be references using srt:sourceRelation instead.</rdfs:comment>
+						<rdfs:domain rdf:resource="http://w3id.org/srt#SpatialObject"/>
+						<rdfs:range>
+							<rdfs:Datatype>
+								<owl:oneOf>
+									<rdf:Description>
+										<rdf:first>Alignment</rdf:first>
+										<rdf:rest>
+											<rdf:Description>
+												<rdf:first>Cadastral</rdf:first>
+												<rdf:rest>
+													<rdf:Description>
+														<rdf:first>Building</rdf:first>
+														<rdf:rest>
+															<rdf:Description>
+																<rdf:first>Constraint</rdf:first>
+																<rdf:rest>
+																	<rdf:Description>
+																		<rdf:first>Unknown</rdf:first>
+																		<rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+																	</rdf:Description>
+																</rdf:rest>
+															</rdf:Description>
+														</rdf:rest>
+													</rdf:Description>
+												</rdf:rest>
+											</rdf:Description>
+										</rdf:rest>
+									</rdf:Description>
+								</owl:oneOf>
+							</rdfs:Datatype>
+						</rdfs:range>
+					</owl:DatatypeProperty>
+				</owl:onProperty>
+				<owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:cardinality>
+			</rdf:Description>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<rdf:Description>
+				<owl:onProperty>
+					<owl:ObjectProperty rdf:about="http://w3id.org/srt#sourceItentifier">
+						<rdfs:label xml:lang="en">sourceItentifier</rdfs:label>
+						<rdfs:comment xml:lang="en">Includes an identifier that should pointing to the source object and used for referencing if a srt:sourceRelation can not be provided in RDF.</rdfs:comment>
+						<rdfs:domain rdf:resource="http://w3id.org/srt#SpatialObject"/>
+						<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+					</owl:ObjectProperty>
+				</owl:onProperty>
+				<owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:cardinality>
+			</rdf:Description>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<rdf:Description>
+				<owl:onProperty>
+					<owl:ObjectProperty rdf:about="http://w3id.org/srt#sourceRelation">
+						<rdfs:label xml:lang="en">sourceRelation</rdfs:label>
+						<rdfs:comment xml:lang="en">Provides a connection to the originating source of information that has been derived into a spatial object. Can be used to access meta information for querying by linking a resource containing additional information about the spatial object. Only necessary if a source object exists.</rdfs:comment>
+						<rdfs:domain rdf:resource="http://w3id.org/srt#SpatialObject"/>
+						<rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#resource"/>
+					</owl:ObjectProperty>
+				</owl:onProperty>
+				<owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</owl:minCardinality>
+			</rdf:Description>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<rdf:Description>
+				<owl:onProperty>
+					<owl:ObjectProperty rdf:about="http://w3id.org/srt#hasWKTType">
+						<rdfs:label xml:lang="en">hasWKTType</rdfs:label>
+						<rdfs:comment xml:lang="en">Classification of the wkt literals contained by the spatial object. Known type resources of the gml specification are recommended to be used.</rdfs:comment>
+						<rdfs:domain rdf:resource="http://w3id.org/srt#SpatialObject"/>
+						<rdfs:range rdf:resource="http://www.opengis.net/ont/gml#AbstractGeometry"/>
+					</owl:ObjectProperty>
+				</owl:onProperty>
+				<owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:cardinality>
+			</rdf:Description>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<rdf:Description>
+				<owl:onProperty rdf:resource="http://www.opengis.net/ont/geosparql#asWKT"/>
+				<owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:cardinality>
+			</rdf:Description>
+		</rdfs:subClassOf>
+	</owl:Class>
+</rdf:RDF>
